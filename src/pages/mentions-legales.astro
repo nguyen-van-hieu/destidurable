@@ -1,0 +1,330 @@
+---
+import Seo from "../components/Seo.astro";
+import { Image } from "astro:assets";
+import imgimages_dd_logo_svg from "../../public/images/dd_logo_2.svg";
+import "../styles/global.css";
+---
+
+<html lang="en">
+  <head>
+    <script>
+      import { showToast } from "../components/toast";
+      (() => {
+        const els = [...document.querySelectorAll("form")];
+        if (!els?.length) return;
+        els.forEach((el) => {
+          console.log("Test 1");
+          el.addEventListener("submit", async (e) => {
+            console.log("Test 2");
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const formObject = Object.fromEntries(formData);
+            formObject.emailUser = "contact@destidurable.com";
+            console.log("formObject", formObject);
+            console.log("Test 3");
+            try {
+              console.log("Test 4");
+              const response = await fetch(
+                "https://app.ecobuilder.io/api/send-mail-contact",
+                {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify(formObject),
+                }
+              );
+              console.log("Test 5");
+              if (!response.ok) {
+                throw new Error("Network response was not ok");
+              }
+              console.log("Test 6");
+              const result = await response.json();
+              showToast("Merci, votre demande a été envoyée.");
+              console.log("Form submitted successfully:", result);
+            } catch (error) {
+              console.error("Error submitting form:", error);
+              showToast("Erreur lors de la soumission du formulaire", "error");
+            }
+          });
+        });
+      })();
+    </script>
+    <Seo
+      seo={{
+        title: "Mentions légales - Desti'durable",
+        description:
+          "Une initiative unique combinant formation et immersion pour aider agences de voyage et événements à adopter un tourisme durable et valoriser les acteurs locaux.",
+        keywords:
+          "voyage durable,voyage écologique europe,formation touristique durable",
+        canonical: "https://destidurable.com/",
+        image:
+          "https://destidurable.com/images/1735896410105_desti_durable_logo.png",
+        type: "Website",
+        themeColor: "#ffffff",
+      }}
+    />
+    <meta charset="utf-8" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://destidurable.com/images/1735896410105_desti_durable_logo.png"
+    />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro</title>
+  </head>
+  <body>
+    <header
+      class="flex flex-col relative shrink-0 box-border h-auto empty:min-h-[30vh] before:content-['Header'] before:absolute before:top-0 before:left-0 before:inline-block before:py-1 before:px-2 before:bg-black/20 before:text-white before:text-sm before:rounded before:!rounded-tl-none before:!rounded-bl-none mb-[1px] header-section"
+    >
+      <div
+        class="header-component bg-[#F6F8F6]"
+        aria-label="Header Desti'Durable Section"
+      >
+        <div class="max-md:max-w-full px-4 py-4">
+          <div class="mx-auto container 2xl:max-w-[1440px]">
+            <div
+              class="flex items-center justify-between w-full"
+              aria-label="Header content container"
+            >
+              <div aria-label="Logo Container">
+                <a
+                  href="/"
+                  class="flex items-center space-x-2"
+                  aria-label="Go to homepage"
+                >
+                  <div class="relative" aria-label="Logo image container">
+                    <Image
+                      alt="Gaiact Company Logo"
+                      src={imgimages_dd_logo_svg}
+                      width="134.75"
+                      height="70"
+                      class="w-[134.75px] h-[70px] object-cover max-w-full"
+                      loading="lazy"
+                      aria-label="Desti'Durable Logo"
+                    />
+                  </div>
+                </a>
+              </div>
+              <div aria-label="Contact button container">
+                <a
+                  class="rounded-full inline-flex items-center justify-center bg-[#FFB84C] px-12 h-[44px] text-[#252525] hover:bg-[#ffa01c]"
+                  aria-label="Button for more info on Hero Desti Durable"
+                  href="/contact">Contactez-nous</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main
+      class="flex flex-col relative shrink-0 box-border h-auto empty:min-h-[30vh] before:content-['Main'] before:absolute before:top-0 before:left-0 before:inline-block before:py-1 before:px-2 before:bg-black/20 before:text-white before:text-sm before:rounded before:!rounded-tl-none before:!rounded-bl-none mb-[1px] main-section"
+    >
+      <section
+        class="main-component flex flex-col overflow-hidden bg-[#F6F8F6] relative"
+        aria-label="Contact Desti Durable Section"
+      >
+        <div class="max-md:max-w-full px-2 py-16">
+          <div class="w-full p-4 mx-auto container 2xl:max-w-[1440px] relative">
+            <h1 class="font-bold text-[44px] leading-[51px] text-center mb-20">
+              Mentions légales
+            </h1>
+            <p>
+              Conformément à l'article n°6 de la Loi n°2004-575 du 21 Juin 2004
+              pour la confiance dans l'économie numérique, les responsables du
+              présent site internet https://destidurable.com/ sont indiqué
+              ci-après
+            </p><br />
+
+            <p>
+              <b>EDITEUR DU SITE</b><br />
+              DIGITAL GREEN TOURISME<br />
+              Adresse : 60 Rue Francois IER, 75008 PARIS, FRANCE<br />
+              Siret : 91932969800014
+            </p><br />
+
+            <p>
+              Le directeur de la publication de ce site est Alexandre ALARY.
+            </p><br />
+
+            <p>
+              <b>CONCEPTION - REALISATION</b><br />
+              GreenWEB<br />
+              LA JARDINERIE<br />
+              5 Rue de l'industrie<br />
+              74000 ANNECY<br />
+              FRANCE<br />
+              https://green-web.fr/<br />
+              SIRET : 88206005600018<br />
+              TVA : FR04882060056<br />
+            </p><br />
+
+            <p>
+              <b>HEBERGEMENT</b><br />
+              Ce site est hébergé par :<br />
+              Digital Forest (Green Web)<br />
+              5 rue de l'industrie<br />
+              74000 Annecy<br />
+              France
+            </p><br />
+
+            <p>
+              <b>Condition d'utilisation</b><br />
+              L'ensemble des informations collectées sont stockées en France, et
+              répondent à l'ensemble des lois en vigueur et notamment au RGPD. La
+              collecte de données fait l'objet d'un consentement en amont. En cas
+              de réclamation, vous pouvez contacter directement les services concernés
+              de la CNIL.
+            </p><br />
+
+            <p>
+              <b>Politique de confidentialité</b><br />
+              Lorsque Desti'Durable est amené à traiter vos données personnelles,
+              nous le faisons dans le respect de nos engagements sociétaux et environnementaux.
+              Que vous souhaitiez exercer vos droits ou poser une question liée à
+              vos données personnelles, n'hésitez pas à nous contacter via contact@destidurable.com
+            </p><br />
+
+            <p>
+              <b>Gestion des cookies</b><br />
+              Nous n'utilisons aucun cookie sur ce site .<br />
+            </p><br />
+
+            <p>
+              <b>Traitement des données</b>
+              Ce site ne traite aucune donnée personnelle.<br />
+              En cas d'envoi d'email avec transmission de certaines de vos données,
+              nous pourrons conserver celles-ci pour une durée de 3 ans à compter
+              des derniers échanges.<br />
+            </p><br />
+
+            <p>
+              Desti'Durable n'utilise principalement que des outils open-sources
+              hébergés chez Digitalforest.fr<br />
+              Vous disposez des droits suivants concernant vos données :
+              <br />• droit d'accès : vous pouvez accéder aux données vous
+              concernant,
+              <br />• droit de rectification : vous pouvez demander à corriger
+              vos données,
+              <br />• droit d'effacement : vous pouvez demander à ce que vos
+              données soient effacées,
+              <br />• droit de limitation : vous pouvez demander la suspension
+              du traitement de vos données,
+              <br />• droit d'opposition : vous pouvez vous opposer à ce que vos
+              données soient traitées,
+              <br />• droit de définir des directives relatives au sort de vos
+              données après votre mort (conservation, effacement et
+              communication), dans les conditions prévues à l'article 85 de la
+              Loi Informatiques et Libertés.<br />
+              Pour exercer vos droits, il vous suffit de contacter contact@destidurable.com
+              Et si, après nous avoir contactés, vous estimez que vos droits n'ont
+              pas été respectés, vous pouvez adresser une réclamation auprès de la
+              Commission Nationale de l'Informatique et des Libertés (CNIL).<br
+              />
+            </p><br />
+
+            <p>
+              <b>Tous droits réservés</b><br />
+              Toute personne naviguant sur le site Internet de Desti'Durable est
+              considérée comme ayant accepté l'application des lois françaises actuellement
+              en vigueur. Elle est tenue de respecter les dispositions de la loi
+              Informatique et libertés dont la violation est passible de sanctions
+              pénales. L'ensemble des éléments composant ce site sont la propriété
+              exclusive de Green WEB .<br />
+              Ce site est une œuvre protégée par la législation sur la propriété
+              intellectuelle. Toute reproduction ou représentation faite sans l'accord
+              de Green WEB constitue une contrefaçon. Seule une utilisation à des
+              fins strictement personnelles est autorisée.<br />
+              L'ensemble de ce site relève de la législation française et internationale
+              sur le droit d'auteur et la propriété intellectuelle. Tous les droits
+              de reproduction sont réservés, y compris pour les documents téléchargeables
+              et les représentations iconographiques et photographiques. La reproduction
+              de tout ou partie de ce site sur quelque support que ce soit est formellement
+              interdite sauf autorisation expresse de Green WEB.<br />
+            </p><br />
+
+            <p>
+              <b>Avertissement</b><br />
+              Malgré tous les soins apportés à la réalisation de ce site et à son
+              actualisation régulière, des erreurs peuvent s'être glissées dans les
+              informations et/ou documents présentés. Les personnes explorant ce
+              site procéderont donc à toutes vérifications utiles.<br />
+            </p><br />
+
+            <p>
+              <b>Liens</b><br />
+              Les sites reliés directement ou indirectement au site Desti'Durable
+              ne sont pas sous son contrôle. En conséquence, Desti'Durable n'assume
+              aucune responsabilité quant aux informations publiées sur ces sites.
+              Les liens avec des sites extérieurs ne sont fournis qu'à titre de commodité
+              et n'impliquent aucune caution quant à leur contenu.<br />
+            </p><br />
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer
+      class="flex flex-col relative shrink-0 box-border h-auto empty:min-h-[30vh] before:content-['Footer'] before:absolute before:top-0 before:left-0 before:inline-block before:py-1 before:px-2 before:bg-black/20 before:text-white before:text-sm before:rounded before:!rounded-tl-none before:!rounded-bl-none mb-[1px] footer-section"
+    >
+      <section class="bg-white" aria-label="Footer Desti Durable Section">
+        <div aria-label="Footer Wrapper">
+          <div class="p-4">
+            <div class="mx-auto container 2xl:max-w-[1440px]">
+              <div
+                class="flex flex-col items-center justify-between gap-6 md:flex-row"
+                aria-label="Footer Content"
+              >
+                <div class="flex items-center gap-2" aria-label="Footer Logo">
+                  <Image
+                    alt="Desti'Durable Logo"
+                    src={imgimages_dd_logo_svg}
+                    width="196"
+                    height="100"
+                    class="w-auto h-auto"
+                    aria-label="Desti'Durable Logo Image"
+                  />
+                </div>
+                <form
+                  class="flex flex-col gap-4 lg:w-full max-w-xl"
+                  aria-label="Footer Email Form"
+                >
+                  <div class="flex w-auto lg:w-full max-w-xl gap-4">
+                    <input
+                      type="email"
+                      placeholder="Adresse e-mail"
+                      class="flex-1 rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      aria-label="Email Input Field"
+                    />
+                    <button
+                      type="submit"
+                      class="inline-flex items-center justify-center rounded-full bg-[#FFB84C] px-12 h-[44px] text-[#252525] transition-all hover:bg-[#ffa01c]"
+                      aria-label="Submit Button">Envoyer</button
+                    >
+                  </div>
+                  <a href="/mentions-legales" class="underline text-[#252525]"
+                    >Mentions légales</a
+                  >
+                </form>
+              </div>
+            </div>
+          </div>
+          <p class="border-t border-[#bbb]"></p>
+          <div class="mx-auto container 2xl:max-w-[1440px]">
+            <p
+              class="text-center text-sm text-[#252525] p-5"
+              aria-label="Footer Copyright Text"
+            >
+              ©
+              <!-- -->2025
+              <!-- --> DESTI&#x27;DURABLE - Site web créé par la société GreenWeb.
+              L&#x27;ensemble des données est stocké en France par Digital Forest,
+              hébergeur éco-responsable.
+            </p>
+          </div>
+        </div>
+      </section>
+    </footer>
+  </body>
+</html>
