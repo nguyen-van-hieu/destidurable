@@ -7,9 +7,6 @@ import tailwind from "@astrojs/tailwind";
 // https://astro.build/config
 export default defineConfig({
   site: "https://destidurable.com",
-  image: {
-    service: { entrypoint: 'astro/assets/services/noop' }
-  },
   integrations: [
     tailwind(),
     robotsTxt(),
